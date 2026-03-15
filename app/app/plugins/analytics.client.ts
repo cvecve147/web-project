@@ -1,6 +1,6 @@
 export default defineNuxtPlugin(() => {
   const runtimeConfig = useRuntimeConfig()
-  const gtagId = runtimeConfig.public.gtagId
+  const gtagId = runtimeConfig.public.gtagId || 'G-HBTXC8NW8N'
 
   if (!gtagId) {
     return
