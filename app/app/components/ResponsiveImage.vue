@@ -50,3 +50,16 @@ const avifSrc = computed(() =>
     />
   </picture>
 </template>
+
+<style scoped>
+picture {
+  width: 100%;
+  display: block;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+</style>

@@ -50,7 +50,12 @@ defineProps<{
   display: block;
 }
 
-.image-link img {
+.image-link :deep(picture) {
+  width: 100%;
+  height: 100%;
+}
+
+.image-link :deep(img) {
   width: 100%;
   height: 100%;
   object-fit: cover;

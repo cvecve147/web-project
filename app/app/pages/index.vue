@@ -164,9 +164,14 @@ useHead({
   background: #221d17;
 }
 
-.hero img {
+.hero :deep(picture) {
   width: 100%;
   height: min(72dvh, 680px);
+}
+
+.hero :deep(img) {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
   opacity: 0.86;

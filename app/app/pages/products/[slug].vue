@@ -175,7 +175,7 @@ useHead({
   gap: 20px;
 }
 
-.image-box img {
+.image-box :deep(img) {
   width: 100%;
   border-radius: 14px;
   object-fit: cover;
