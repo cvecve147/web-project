@@ -1,0 +1,13 @@
+{
+  "name": "web-project-renovation",
+  "private": true,
+  "packageManager": "pnpm@10.19.0",
+  "scripts": {
+    "dev": "pnpm --dir app dev",
+    "build": "pnpm --dir app build",
+    "generate": "pnpm --dir app generate",
+    "optimize:images": "pnpm --dir app optimize:images",
+    "preview": "pnpm --dir app preview",
+    "typecheck": "pnpm --dir app typecheck"
+  }
+}

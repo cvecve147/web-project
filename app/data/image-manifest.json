@@ -1,0 +1,58 @@
+[
+  {
+    "file": "images/products/17.jpg",
+    "width": 1440,
+    "height": 1080,
+    "webp": "images/products/17.webp",
+    "avif": "images/products/17.avif"
+  },
+  {
+    "file": "images/products/mothers-day-cake.jpg",
+    "width": 1179,
+    "height": 1473,
+    "webp": "images/products/mothers-day-cake.webp",
+    "avif": "images/products/mothers-day-cake.avif"
+  },
+  {
+    "file": "images/products/12.jpg",
+    "width": 1440,
+    "height": 1080,
+    "webp": "images/products/12.webp",
+    "avif": "images/products/12.avif"
+  },
+  {
+    "file": "images/products/13.jpg",
+    "width": 1440,
+    "height": 1080,
+    "webp": "images/products/13.webp",
+    "avif": "images/products/13.avif"
+  },
+  {
+    "file": "images/products/14.jpg",
+    "width": 1440,
+    "height": 1080,
+    "webp": "images/products/14.webp",
+    "avif": "images/products/14.avif"
+  },
+  {
+    "file": "images/products/15.jpg",
+    "width": 1440,
+    "height": 1080,
+    "webp": "images/products/15.webp",
+    "avif": "images/products/15.avif"
+  },
+  {
+    "file": "images/products/16.jpg",
+    "width": 1440,
+    "height": 1080,
+    "webp": "images/products/16.webp",
+    "avif": "images/products/16.avif"
+  },
+  {
+    "file": "images/products/18.jpg",
+    "width": 1440,
+    "height": 1080,
+    "webp": "images/products/18.webp",
+    "avif": "images/products/18.avif"
+  }
+]

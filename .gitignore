@@ -1,0 +1,25 @@
+# Node / pnpm
+node_modules
+.pnpm-store
+
+# Nuxt
+app/.nuxt
+app/.output
+app/.data
+app/.nitro
+app/.cache
+app/dist
+app/node_modules
+
+# Local env
+.env
+.env.*
+!.env.example
+app/.env
+app/.env.*
+!app/.env.example
+
+# OS / IDE
+.DS_Store
+.idea
+.vscode
