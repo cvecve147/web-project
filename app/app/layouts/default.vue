@@ -32,6 +32,7 @@ import { brand } from '~~/data/catalog'
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
+  overflow-x: clip;
 }
 
 .header {
@@ -58,6 +59,7 @@ import { brand } from '~~/data/catalog'
   text-decoration: none;
   color: #221a14;
   font-weight: 700;
+  min-width: 0;
 }
 
 nav {
@@ -87,5 +89,31 @@ nav a {
 .footer .inner {
   padding-top: 16px;
   padding-bottom: 16px;
+}
+
+@media (max-width: 640px) {
+  .header .inner {
+    padding: 10px 14px;
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  .brand {
+    font-size: 0.98rem;
+  }
+
+  nav {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  nav a {
+    font-size: 0.94rem;
+  }
+
+  .footer .inner {
+    padding: 12px 14px;
+  }
 }
 </style>

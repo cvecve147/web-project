@@ -109,4 +109,20 @@ h3 a {
   margin: 0;
   color: #6b6259;
 }
+
+@media (max-width: 640px) {
+  .card {
+    grid-template-rows: 190px 1fr;
+    border-radius: 14px;
+  }
+
+  .content {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  h3 {
+    font-size: 1.06rem;
+  }
+}
 </style>

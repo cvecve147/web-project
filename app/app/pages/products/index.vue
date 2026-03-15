@@ -149,4 +149,25 @@ h2 {
   padding: 8px 14px;
   font-weight: 600;
 }
+
+@media (max-width: 640px) {
+  .page {
+    padding: 14px;
+    gap: 18px;
+  }
+
+  .header {
+    border-radius: 16px;
+    padding: 14px;
+  }
+
+  .inquiry {
+    border-radius: 16px;
+    padding: 14px;
+  }
+
+  h2 {
+    margin-bottom: 10px;
+  }
+}
 </style>

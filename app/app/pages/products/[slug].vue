@@ -229,4 +229,28 @@ h1 {
     align-items: start;
   }
 }
+
+@media (max-width: 640px) {
+  .page {
+    padding: 14px;
+  }
+
+  .container {
+    gap: 10px;
+  }
+
+  .breadcrumb {
+    font-size: 0.84rem;
+  }
+
+  .product {
+    border-radius: 16px;
+    padding: 14px;
+    gap: 14px;
+  }
+
+  .contact {
+    gap: 8px;
+  }
+}
 </style>

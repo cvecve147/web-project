@@ -269,6 +269,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 14px;
 }
@@ -334,6 +335,7 @@ h1 {
 .links {
   margin-top: 14px;
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
 }
 
@@ -341,5 +343,39 @@ h1 {
   color: #744f35;
   text-decoration: none;
   font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 14px;
+    gap: 20px;
+  }
+
+  .hero {
+    border-radius: 18px;
+  }
+
+  .hero :deep(picture) {
+    height: min(58dvh, 520px);
+  }
+
+  .overlay {
+    padding: 18px;
+    gap: 10px;
+  }
+
+  .section-head {
+    margin-bottom: 10px;
+  }
+
+  .section-head a {
+    font-size: 0.95rem;
+  }
+
+  .contact,
+  .inquiry {
+    border-radius: 16px;
+    padding: 14px;
+  }
 }
 </style>
