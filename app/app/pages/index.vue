@@ -23,6 +23,37 @@ const productListSchema = computed(() => ({
     name: product.name
   }))
 }))
+
+const faqSchema = computed(() => ({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: '如何訂購芳嚮桿手作坊商品？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '可透過 Facebook、Instagram 私訊，或 Line（dt0319）聯繫訂購。'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: '是否可以客製蛋糕或禮盒？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '可提供客製蛋糕、節慶禮盒與季節限定品項，請私訊詢問需求與交期。'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: '商品頁價格是否為最新資訊？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '網站顯示目前在架商品價格；特殊客製需求請私訊確認最終報價。'
+      }
+    }
+  ]
+}))
 const homeProducts = computed(() => activeProducts)
 const { trackContactClick } = useAnalytics()
 const onSocialClick = (channel: 'facebook' | 'instagram', placement: string) => {
@@ -57,6 +88,10 @@ useHead({
     {
       type: 'application/ld+json',
       innerHTML: JSON.stringify(productListSchema.value)
+    },
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(faqSchema.value)
     }
   ]
 })
