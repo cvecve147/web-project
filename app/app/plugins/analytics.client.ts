@@ -1,8 +1,3 @@
-const getGtag = () => {
-  const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag
-  return typeof gtag === 'function' ? gtag : null
-}
-
 export default defineNuxtPlugin(() => {
   const runtimeConfig = useRuntimeConfig()
   const gtagId = runtimeConfig.public.gtagId
@@ -11,26 +6,32 @@ export default defineNuxtPlugin(() => {
     return
   }
 
+  const analyticsWindow = window as Window & {
+    dataLayer?: unknown[]
+    gtag?: (...args: unknown[]) => void
+  }
+
+  analyticsWindow.dataLayer = analyticsWindow.dataLayer || []
+  analyticsWindow.gtag =
+    analyticsWindow.gtag ||
+    ((...args: unknown[]) => {
+      analyticsWindow.dataLayer!.push(args)
+    })
+
   useHead({
     script: [
       {
         src: `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(gtagId)}`,
         async: true
-      },
-      {
-        key: 'ga4-init',
-        innerHTML: `window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments);}window.gtag=window.gtag||gtag;window.gtag('js', new Date());window.gtag('config', '${gtagId}', { send_page_view: false });`
       }
     ]
   })
 
-  const sendPageView = () => {
-    const gtag = getGtag()
-    if (!gtag) {
-      return
-    }
+  analyticsWindow.gtag('js', new Date())
+  analyticsWindow.gtag('config', gtagId, { send_page_view: false })
 
-    gtag('event', 'page_view', {
+  const sendPageView = () => {
+    analyticsWindow.gtag?.('event', 'page_view', {
       page_path: `${window.location.pathname}${window.location.search}${window.location.hash}`,
       page_location: window.location.href,
       page_title: document.title
