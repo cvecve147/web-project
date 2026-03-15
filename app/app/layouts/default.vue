@@ -114,6 +114,15 @@ nav a {
 
   .footer .inner {
     padding: 12px 14px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .footer p {
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 }
 </style>

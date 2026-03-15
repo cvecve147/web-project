@@ -368,6 +368,20 @@ h1 {
     margin-bottom: 10px;
   }
 
+  .section-head h2,
+  .contact h2 {
+    font-size: 1.24rem;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .inquiry-text,
+  .contact p {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
   .section-head a {
     font-size: 0.95rem;
   }
