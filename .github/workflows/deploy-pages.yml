@@ -1,0 +1,87 @@
+name: Deploy Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.19.0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: app/pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm --dir app install --frozen-lockfile
+
+      - name: Type check
+        run: pnpm --dir app typecheck
+
+      - name: Resolve deployment env
+        env:
+          INPUT_SITE_URL: ${{ vars.NUXT_SITE_URL }}
+          INPUT_BASE_URL: ${{ vars.NUXT_APP_BASE_URL }}
+          INPUT_GTAG_ID: ${{ vars.NUXT_PUBLIC_GTAG_ID }}
+        run: |
+          REPO_NAME="${GITHUB_REPOSITORY#*/}"
+          OWNER="${GITHUB_REPOSITORY_OWNER}"
+          if [ "${REPO_NAME}" = "${OWNER}.github.io" ]; then
+            DEFAULT_SITE_URL="https://${OWNER}.github.io/"
+            DEFAULT_BASE_URL="/"
+          else
+            DEFAULT_SITE_URL="https://${OWNER}.github.io/${REPO_NAME}/"
+            DEFAULT_BASE_URL="/${REPO_NAME}/"
+          fi
+          DEFAULT_GTAG_ID="G-HBTXC8NW8N"
+          SITE_URL="${INPUT_SITE_URL:-$DEFAULT_SITE_URL}"
+          BASE_URL="${INPUT_BASE_URL:-$DEFAULT_BASE_URL}"
+          GTAG_ID="${INPUT_GTAG_ID:-$DEFAULT_GTAG_ID}"
+          echo "NUXT_SITE_URL=${SITE_URL}" >> "$GITHUB_ENV"
+          echo "NUXT_APP_BASE_URL=${BASE_URL}" >> "$GITHUB_ENV"
+          if [ -n "${GTAG_ID}" ]; then
+            echo "NUXT_PUBLIC_GTAG_ID=${GTAG_ID}" >> "$GITHUB_ENV"
+          fi
+
+      - name: Generate static site
+        run: pnpm --dir app generate
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: app/.output/public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
