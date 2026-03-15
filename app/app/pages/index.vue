@@ -366,6 +366,7 @@ h1 {
 
   .section-head {
     margin-bottom: 10px;
+    display: block;
   }
 
   .section-head h2,
@@ -380,6 +381,7 @@ h1 {
   .contact p {
     overflow-wrap: anywhere;
     word-break: break-word;
+    line-height: 1.65;
   }
 
   .section-head a {
@@ -390,6 +392,20 @@ h1 {
   .inquiry {
     border-radius: 16px;
     padding: 14px;
+  }
+
+  .inquiry-actions,
+  .links {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .inquiry-actions a,
+  .links a {
+    width: 100%;
+    text-align: center;
+    padding: 10px 12px;
   }
 }
 </style>

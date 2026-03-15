@@ -169,5 +169,17 @@ h2 {
   h2 {
     margin-bottom: 10px;
   }
+
+  .inquiry-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .inquiry-actions a {
+    width: 100%;
+    text-align: center;
+    padding: 10px 12px;
+  }
 }
 </style>
